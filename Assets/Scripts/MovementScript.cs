@@ -12,6 +12,10 @@ public class MovementScript : MonoBehaviour
     [SerializeField] float groundCheckDistance = 1;
     bool onGround = false;
     [SerializeField] LayerMask environmentOnly;
+    [SerializeField] Animator anim;
+    [SerializeField] PlayerStats stats;
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
 
     Transform cam;
 
@@ -32,8 +36,19 @@ public class MovementScript : MonoBehaviour
         if(Input.GetButtonDown("Jump") && onGround)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            if (rb.velocity.y < 0)
+            {
+                rb.velocity += Vector3.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            }
+            else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+            {
+                rb.velocity += Vector3.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            }
+            anim.SetTrigger("jump");
+            //stats.CurrentHealth -= 1; This is for modifying stats (use in a different capacity)
         }
 
+        
 
         //Debug.DrawLine(transform.position, transform.position + transform.up * groundCheckDistance, Color.red);
     }
@@ -58,5 +73,9 @@ public class MovementScript : MonoBehaviour
        
         movementVector.y = rb.velocity.y;
         rb.velocity = movementVector;
+
+        anim.SetFloat("speed", movementVector.magnitude);
+
+        anim.transform.forward = movementVector;
     }
 }
