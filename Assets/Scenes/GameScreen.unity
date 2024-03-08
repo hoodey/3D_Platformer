@@ -350,6 +350,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  groundCheckDistance: 1
+  jumpForce: 10
+  anim: {fileID: 1021241618}
+  environmentOnly:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!54 &495558266
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -375,7 +381,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &499641336
 GameObject:
@@ -389,7 +395,7 @@ GameObject:
   - component: {fileID: 499641340}
   - component: {fileID: 499641339}
   - component: {fileID: 499641338}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -494,7 +500,7 @@ GameObject:
   - component: {fileID: 526470605}
   - component: {fileID: 526470604}
   - component: {fileID: 526470603}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -599,7 +605,7 @@ GameObject:
   - component: {fileID: 686110489}
   - component: {fileID: 686110488}
   - component: {fileID: 686110487}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -749,6 +755,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 9efb51a6e5f364445be2ca6fa9324022, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 4ffcb5e0b30294b44bc15f79fc7eb178, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -771,7 +781,7 @@ GameObject:
   - component: {fileID: 934950732}
   - component: {fileID: 934950731}
   - component: {fileID: 934950730}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -864,6 +874,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934950728}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &1021241618 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 4ffcb5e0b30294b44bc15f79fc7eb178, type: 3}
+  m_PrefabInstance: {fileID: 822795524}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1134036538
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,7 +1139,7 @@ GameObject:
   - component: {fileID: 1327743522}
   - component: {fileID: 1327743521}
   - component: {fileID: 1327743520}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1556,7 +1571,7 @@ GameObject:
   - component: {fileID: 2030512414}
   - component: {fileID: 2030512413}
   - component: {fileID: 2030512412}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
