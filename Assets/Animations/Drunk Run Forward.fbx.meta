@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 445e6e0dea05f0746a070d7d2d3803ba
+guid: 2a9a23d19f2d58b4db43385787cbd22c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,25 +33,25 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Jumping Up
+      name: DrunkRun
       takeName: mixamo.com
       internalID: -203655887218126122
-      firstFrame: 14
-      lastFrame: 25
+      firstFrame: 0
+      lastFrame: 55
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 1
+      keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000

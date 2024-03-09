@@ -5,11 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //Serialized Fields
-    [SerializeField] int speed = 2;
+    [SerializeField] float speed = 4f;
     [SerializeField] float groundCheckDistance = 1f;
     [SerializeField] float jumpForce = 10f;
     [SerializeField] Animator anim;
     [SerializeField] LayerMask environmentOnly;
+    [SerializeField] float runningSpeed = 10f;
 
     //Fields
     Rigidbody rb;
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
         //Conditional to track whether we are on ground (by sending a raycast into the floor)
         onGround = (Physics.Raycast(transform.position, Vector3.up * -1, groundCheckDistance, environmentOnly));
 
+
         //Create movement controls based on input from the left/right axis, and forward/back axis
         fmi = Input.GetAxis("Vertical");
         rmi = Input.GetAxis("Horizontal");
@@ -43,6 +45,27 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             anim.SetTrigger("jump");
+        }
+
+        if (!onGround)
+        {
+            anim.SetBool("onGround", false);
+        }
+        else if (onGround)
+        {
+            anim.SetBool("onGround", true);
+        }
+
+        //Running logic
+        if (Input.GetButton("Shift"))
+        {
+            speed = runningSpeed;
+            anim.SetBool("isRunning", true);
+        }
+        else
+        {
+            speed = 4f;
+            anim.SetBool("isRunning", false);
         }
 
         //code for an event on jump (this should be in the jump logic)
