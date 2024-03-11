@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CoinLogic : MonoBehaviour
 {
@@ -16,7 +17,8 @@ public class CoinLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (stats.CoinsLeft <= 0)
+            AllCoinsCollected();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,5 +27,10 @@ public class CoinLogic : MonoBehaviour
         stats.CoinsLeft -= 1;
         soundEffect.Play();
         Object.Destroy(this.gameObject,.8f);
+    }
+
+    void AllCoinsCollected()
+    {
+        SceneManager.LoadScene("VictoryScreen");
     }
 }

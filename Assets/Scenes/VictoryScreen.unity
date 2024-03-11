@@ -719,6 +719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statsText: {fileID: 210462119}
+  stats: {fileID: 11400000, guid: b57e5ba385c97c344b79b92e0b51a540, type: 2}
 --- !u!114 &449877436
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TimerLogic : MonoBehaviour
 {
@@ -22,14 +23,24 @@ public class TimerLogic : MonoBehaviour
         if (timeLeft <= 0)
         {
             timeLeft += 60f;
-            //EndGame(); Need to do something at this point
+            GameOver();
         }
+    }
+
+    void GameOver()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 
     public static float GetTimeRemaining()
     {
         float timeRemaining = 60f - timeLeft;
         return timeRemaining;
+    }
+
+    public static void ResetTimer()
+    {
+        timeLeft = 60f;
     }
 
 }
