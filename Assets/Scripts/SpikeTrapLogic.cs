@@ -26,7 +26,10 @@ public class SpikeTrapLogic : MonoBehaviour
         PlayerController p = player.GetComponent<PlayerController>();
         if (p.hurt == false)
         {
-            stats.CurrentHealth -= 1;
+            if (stats.CurrentHealth > 0)
+            {
+                stats.CurrentHealth -= 1;
+            }
             soundEffect.Play();
             p.hurt = true;
         }

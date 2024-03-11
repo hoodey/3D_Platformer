@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask environmentOnly;
     [SerializeField] LayerMask trapOnly;
     [SerializeField] float runningSpeed = 10f;
-    [SerializeField] float iFrameTimer = 4f;
+    [SerializeField] float iFrameTimer = 2f;
 
     //Fields
     //float playerAlpha = 255f;
@@ -24,9 +24,7 @@ public class PlayerController : MonoBehaviour
     float fmi; //forward movement input = fmi 
     float rmi; //right movement input = rmi
     public bool hurt = false; //damaged state
-
-    //[SerializeField] UnityEvent OnJump //This is for creating an on jump event to trigger like a particle animation
-    //UnityAction OnJumpA
+    
 
     // Start is called before the first frame update
     void Start()
@@ -85,7 +83,11 @@ public class PlayerController : MonoBehaviour
         if (iFrameTimer <= 0f)
         {
             hurt = false;
-            iFrameTimer = 4f;
+            iFrameTimer = 2f;
+            if (onTrap)
+            {
+                rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
+            }
             //playerAlpha = 255f;
         }
 
