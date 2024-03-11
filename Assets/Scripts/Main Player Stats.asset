@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b512b8601602d314089ad3dfb922fa9b, type: 3}
-  m_Name: New Player Stats
+  m_Name: Main Player Stats
   m_EditorClassIdentifier: 
   MaxHealth: 10
   CurrentHealth: 10
+  CoinsCollected: 21
+  CoinsLeft: 79
