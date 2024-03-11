@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,14 +11,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float jumpForce = 10f;
     [SerializeField] Animator anim;
     [SerializeField] LayerMask environmentOnly;
+    [SerializeField] LayerMask trapOnly;
     [SerializeField] float runningSpeed = 10f;
+    [SerializeField] float iFrameTimer = 4f;
 
     //Fields
+    //float playerAlpha = 255f;
     Rigidbody rb;
     bool onGround = false;
+    bool onTrap = false;
     Transform cam;
     float fmi; //forward movement input = fmi 
     float rmi; //right movement input = rmi
+    public bool hurt = false; //damaged state
 
     //[SerializeField] UnityEvent OnJump //This is for creating an on jump event to trigger like a particle animation
     //UnityAction OnJumpA
@@ -34,6 +40,8 @@ public class PlayerController : MonoBehaviour
     {
         //Conditional to track whether we are on ground (by sending a raycast into the floor)
         onGround = (Physics.Raycast(transform.position, Vector3.up * -1, groundCheckDistance, environmentOnly));
+        //Conditional to check if we've landed on spike trap
+        onTrap = (Physics.Raycast(transform.position, Vector3.up * -1, groundCheckDistance, trapOnly));
 
 
         //Create movement controls based on input from the left/right axis, and forward/back axis
@@ -41,17 +49,17 @@ public class PlayerController : MonoBehaviour
         rmi = Input.GetAxis("Horizontal");
 
         //Jump logic
-        if (Input.GetButtonDown("Jump") && onGround)
+        if (Input.GetButtonDown("Jump") && (onGround || onTrap))
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             anim.SetTrigger("jump");
         }
 
-        if (!onGround)
+        if (!onGround && !onTrap)
         {
             anim.SetBool("onGround", false);
         }
-        else if (onGround)
+        else if (onGround || onTrap)
         {
             anim.SetBool("onGround", true);
         }
@@ -68,9 +76,19 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isRunning", false);
         }
 
-        //code for an event on jump (this should be in the jump logic)
-        // OnJump.Invoke();
-        //OnJumpA.Invoke();
+        if (hurt)
+        {
+            iFrameTimer -= 1f*Time.deltaTime;
+            //playerAlpha = 150f;
+        }
+
+        if (iFrameTimer <= 0f)
+        {
+            hurt = false;
+            iFrameTimer = 4f;
+            //playerAlpha = 255f;
+        }
+
     }
 
     //Fixed Update for physics based updates
