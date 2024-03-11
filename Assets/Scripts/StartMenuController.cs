@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 public class StartMenuController : MonoBehaviour
 {
 
+    //Set stats to be able to reset them on menu start up
+    [SerializeField] PlayerStats stats;
+
     // Start is called before the first frame update
     void Start()
     {

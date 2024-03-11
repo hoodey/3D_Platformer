@@ -6,7 +6,7 @@ using TMPro;
 public class TimerLogic : MonoBehaviour
 {
     [SerializeField] TMP_Text timer;
-    [SerializeField] float timeLeft = 60f;
+    [SerializeField] static float timeLeft = 60f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,4 +25,11 @@ public class TimerLogic : MonoBehaviour
             //EndGame(); Need to do something at this point
         }
     }
+
+    public static float GetTimeRemaining()
+    {
+        float timeRemaining = 60f - timeLeft;
+        return timeRemaining;
+    }
+
 }
