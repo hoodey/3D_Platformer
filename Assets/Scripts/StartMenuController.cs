@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class StartMenuController : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +18,15 @@ public class StartMenuController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void play()
+    {
+        SceneManager.LoadScene("GameScreen");
+    }
+
+    public void quit()
+    {
+        Application.Quit();
     }
 }
