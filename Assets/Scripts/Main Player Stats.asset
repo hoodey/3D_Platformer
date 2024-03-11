@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 5
   CurrentHealth: 5
-  CoinsCollected: 32
-  CoinsLeft: 68
+  CoinsCollected: 0
+  CoinsLeft: 10

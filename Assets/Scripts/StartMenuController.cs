@@ -16,8 +16,8 @@ public class StartMenuController : MonoBehaviour
     void Start()
     {
         //Set all of our defaults for the game on main menu load
-        stats.MaxHealth = 10f;
-        stats.CurrentHealth = 10f;
+        stats.MaxHealth = 5f;
+        stats.CurrentHealth = 5f;
         stats.CoinsCollected = 0;
         stats.CoinsLeft = NUMBER_OF_COINS_IN_SCENE;
         TimerLogic.ResetTimer();
