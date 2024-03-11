@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class PlayerController : MonoBehaviour
 {
     //Serialized Fields
-    [SerializeField] float speed = 4f;
+    [SerializeField] float walkingSpeed = 2f;
     [SerializeField] float groundCheckDistance = 1f;
     [SerializeField] float jumpForce = 10f;
     [SerializeField] Animator anim;
@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     //Fields
     //float playerAlpha = 255f;
+    float speed = 2f;
     Rigidbody rb;
     bool onGround = false;
     bool onTrap = false;
@@ -40,7 +41,6 @@ public class PlayerController : MonoBehaviour
         onGround = (Physics.Raycast(transform.position, Vector3.up * -1, groundCheckDistance, environmentOnly));
         //Conditional to check if we've landed on spike trap
         onTrap = (Physics.Raycast(transform.position, Vector3.up * -1, groundCheckDistance, trapOnly));
-
 
         //Create movement controls based on input from the left/right axis, and forward/back axis
         fmi = Input.GetAxis("Vertical");
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            speed = 4f;
+            speed = walkingSpeed;
             anim.SetBool("isRunning", false);
         }
 

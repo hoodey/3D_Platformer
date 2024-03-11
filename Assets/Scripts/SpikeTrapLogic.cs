@@ -22,16 +22,20 @@ public class SpikeTrapLogic : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        player = collision.gameObject;
-        PlayerController p = player.GetComponent<PlayerController>();
-        if (p.hurt == false)
+        if (collision.gameObject.name == "CharacterParent")
         {
-            if (stats.CurrentHealth > 0)
+            player = collision.gameObject;
+            PlayerController p = player.GetComponent<PlayerController>();
+            if (p.hurt == false)
             {
-                stats.CurrentHealth -= 1;
+                if (stats.CurrentHealth > 0)
+                {
+                    stats.CurrentHealth -= 1;
+                }
+                soundEffect.Play();
+                p.hurt = true;
             }
-            soundEffect.Play();
-            p.hurt = true;
+
         }
     }
 

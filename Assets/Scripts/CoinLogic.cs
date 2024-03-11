@@ -7,6 +7,7 @@ public class CoinLogic : MonoBehaviour
 {
     [SerializeField] PlayerStats stats;
     [SerializeField] AudioSource soundEffect;
+    bool collected = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,10 +24,14 @@ public class CoinLogic : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        stats.CoinsCollected += 1;
-        stats.CoinsLeft -= 1;
-        soundEffect.Play();
-        Object.Destroy(this.gameObject,.8f);
+        if (!collected)
+        {
+            stats.CoinsCollected += 1;
+            stats.CoinsLeft -= 1;
+            soundEffect.Play();
+            Object.Destroy(this.gameObject, .8f);
+            collected = true;
+        }
     }
 
     void AllCoinsCollected()

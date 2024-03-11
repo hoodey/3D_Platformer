@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HealthBar : MonoBehaviour
 {
@@ -18,5 +19,10 @@ public class HealthBar : MonoBehaviour
     void Update()
     {
         bar.fillAmount = stats.CurrentHealth / stats.MaxHealth;
+
+        if (stats.CurrentHealth <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }

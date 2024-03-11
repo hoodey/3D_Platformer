@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b512b8601602d314089ad3dfb922fa9b, type: 3}
   m_Name: Main Player Stats
   m_EditorClassIdentifier: 
-  MaxHealth: 10
-  CurrentHealth: 10
-  CoinsCollected: 21
-  CoinsLeft: 79
+  MaxHealth: 5
+  CurrentHealth: 5
+  CoinsCollected: 32
+  CoinsLeft: 68
