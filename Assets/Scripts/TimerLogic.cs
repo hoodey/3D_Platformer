@@ -25,6 +25,12 @@ public class TimerLogic : MonoBehaviour
             timeLeft += 60f;
             GameOver();
         }
+
+        if (Input.GetButtonDown("R"))
+        {
+            Restart();
+        }
+
     }
 
     void GameOver()
@@ -36,6 +42,11 @@ public class TimerLogic : MonoBehaviour
     {
         float timeRemaining = 60f - timeLeft;
         return timeRemaining;
+    }
+
+    void Restart()
+    {
+        SceneManager.LoadScene("TitleScreen");
     }
 
     public static void ResetTimer()
